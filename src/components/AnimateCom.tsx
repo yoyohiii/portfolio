@@ -2,7 +2,7 @@
  * @Author: yoyo
  * @Date: 2026-01-07 16:12:43
  * @LastEditors: yoyo
- * @LastEditTime: 2026-01-21 16:43:57
+ * @LastEditTime: 2026-01-27 17:41:59
  * @FilePath: \next-react\src\components\AnimateCom.tsx
  * @Description:
  */
@@ -22,7 +22,7 @@ export function AnimateFadeIn({
  className,
  style,
  delay = 0.5,
- once = false,
+ once = true,
  ease = "easeOut",
  duration = 0.4,
 }: {

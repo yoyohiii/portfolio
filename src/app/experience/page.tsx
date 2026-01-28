@@ -2,7 +2,7 @@
  * @Author: yoyo
  * @Date: 2025-12-24 14:19:33
  * @LastEditors: yoyo
- * @LastEditTime: 2026-01-22 16:46:13
+ * @LastEditTime: 2026-01-28 16:37:55
  * @FilePath: \next-react\src\app\experience\page.tsx
  * @Description:
  */
@@ -11,14 +11,13 @@ import { CalendarDays } from "lucide-react";
 import { education, experience } from "@/src/data/resume";
 import { AnimateFadeIn } from "@/src/components/AnimateCom";
 import SpotlightCard from "@/src/components/SpotlightCard";
+import HomeTitle from "@/src/components/HomeTitle";
 
 export default function ExperiencePage() {
  return (
-  <div className="py-20 px-[15%]">
-   <div className="text-2xl my-10 title-border text-shadow-lg">
-    EDUCTION & EXPERIENCE
-   </div>
-   <div className="w-full h-full flex gap-14">
+  <div className="py-20 flex flex-col items-center">
+   <HomeTitle title="EDUCATION & EXPERIENCE" />
+   <div className="w-[70%] flex gap-14">
     <AnimateFadeIn className="flex-1">
      {education.map((ele, index) => (
       <div key={index} className="border-l-2 border-(--active) relative p-4">

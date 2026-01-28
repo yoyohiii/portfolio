@@ -2,7 +2,7 @@
  * @Author: yoyo
  * @Date: 2025-12-24 10:15:47
  * @LastEditors: yoyo
- * @LastEditTime: 2026-01-22 16:16:53
+ * @LastEditTime: 2026-01-28 16:39:49
  * @FilePath: \next-react\src\app\service\page.tsx
  * @Description:
  */
@@ -14,12 +14,13 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import SpotlightCard from "@/src/components/SpotlightCard";
+import HomeTitle from "@/src/components/HomeTitle";
 
 export default function DemoPage() {
  return (
-  <AnimateFadeIn className="py-20 px-[20%]">
-   <div className="text-2xl my-10 title-border text-shadow-lg">SERVICE</div>
-   <div className="grid grid-cols-2 gap-10 h-150 mx-auto">
+  <AnimateFadeIn className="py-20 flex flex-col items-center">
+   <HomeTitle title="SERVICE" />
+   <div className="w-3/5 grid grid-cols-2 gap-10 h-150 mx-auto">
     {services.map((ele, index) => (
      <SpotlightCard
       key={index}

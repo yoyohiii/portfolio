@@ -9,6 +9,13 @@
  align-items: center;
 }
 
+.flex-col-center {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
 .ring-circle {
  border-radius: 50%;
  background-size: cover;

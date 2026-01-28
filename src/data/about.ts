@@ -2,7 +2,7 @@
  * @Author: yoyo
  * @Date: 2025-12-26 17:15:33
  * @LastEditors: yoyo
- * @LastEditTime: 2026-01-23 18:29:25
+ * @LastEditTime: 2026-01-27 15:06:23
  * @FilePath: \next-react\src\data\about.ts
  * @Description:
  */
@@ -15,7 +15,7 @@ const personal = {
  email: "1458032960@qq.com",
  phone: "19112345678",
  address: "Chengdu, China",
- imgs: ["star.jpg", "sea.jpg"],
+ imgs: ["yoyo1.jpg", "yoyo2.jpg", "sea.jpg"],
  introduce:
   "Hello! I’m Alex Smith. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fermentum ullamcorper sem, at placerat dolor volutpat ac. Duis nulla enim, condimentum nec ultricies.",
  socialMedia: [

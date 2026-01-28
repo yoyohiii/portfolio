@@ -1,3 +1,11 @@
+/*
+ * @Author: yoyo
+ * @Date: 2026-01-05 11:14:56
+ * @LastEditors: yoyo
+ * @LastEditTime: 2026-01-28 16:21:25
+ * @FilePath: \next-react\src\data\portfolio.ts
+ * @Description:
+ */
 export interface IPortfolio {
  name: string;
  time: string;
@@ -14,7 +22,7 @@ const portfolios: IPortfolio[] = [
   site: " www.project-site.com",
   technology: ["HTML5", "CSS3", "jQuery", "Ajax"],
   des: "Aliquam euismod aliquam massa, quis eleifend dui sodales vitae. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-  imgs: ["project1.jpg", "project2.jpg"],
+  imgs: ["project3.jpg", "project2.jpg"],
  },
  {
   name: "河南交投",
@@ -30,7 +38,7 @@ const portfolios: IPortfolio[] = [
   site: " www.project-site.com",
   technology: ["HTML5", "CSS3", "jQuery", "Ajax"],
   des: "Aliquam euismod aliquam massa, quis eleifend dui sodales vitae. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-  imgs: ["project2.jpg", "project3.jpg"],
+  imgs: ["project3.jpg"],
  },
 ];
 

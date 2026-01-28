@@ -2,17 +2,14 @@
  * @Author: yoyo
  * @Date: 2025-12-24 15:39:21
  * @LastEditors: yoyo
- * @LastEditTime: 2026-01-21 17:43:30
+ * @LastEditTime: 2026-01-27 15:22:16
  * @FilePath: \next-react\src\app\contact\page.tsx
  * @Description:
  */
 "use client";
-
-import { AnimateFadeIn } from "@/src/components/AnimateCom";
 import ElectricBorder from "@/src/components/ElectricBorder";
 import personal from "@/src/data/about";
-import { Mail, MapPin, Smartphone } from "lucide-react";
-import { Transition } from "motion/react";
+import { Mail, Smartphone } from "lucide-react";
 import * as motion from "motion/react-client";
 
 export default function resumePage() {
@@ -20,7 +17,7 @@ export default function resumePage() {
   <div className="size-full flex-center">
    <div className="flex gap-10 w-3/5">
     <div className="w-1/2">
-     <div className="text-5xl font-bold mb-10">
+     <div className="text-5xl font-bold mb-10 text-shadow-lg">
       Get In <span className="text-(--active)">Touch</span>
      </div>
 
@@ -51,7 +48,7 @@ export default function resumePage() {
      </div>
     </div>
 
-    <AnimateFadeIn className="relative w-1/2 mx-10">
+    <div className="relative w-1/2 mx-10">
      {/* <div className="absolute text-center w-full top-2 left-0 text-2xl">
        Contact Form
       </div> */}
@@ -87,7 +84,7 @@ export default function resumePage() {
       className="border-r-2 border-b-2 right-0 bottom-0"
       style={borderBox}
      ></div> */}
-    </AnimateFadeIn>
+    </div>
    </div>
   </div>
  );

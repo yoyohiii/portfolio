@@ -2,7 +2,7 @@
  * @Author: yoyo
  * @Date: 2026-01-20 16:44:06
  * @LastEditors: yoyo
- * @LastEditTime: 2026-01-23 18:28:58
+ * @LastEditTime: 2026-01-27 14:07:51
  * @FilePath: \next-react\src\app\page.tsx
  * @Description:
  */
@@ -12,6 +12,7 @@ import { animate, motion, useSpring } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { SplitText } from "gsap/SplitText";
 import { gsap } from "gsap";
+import Home from "./home/page";
 import About from "./about/page";
 import Concat from "./contact/page";
 import Service from "./service/page";
@@ -32,6 +33,11 @@ export default function HomePage() {
  });
 
  const sections = [
+  {
+   id: "home",
+   name: "HOME",
+   component: Home,
+  },
   {
    id: "about",
    name: "ABOUT",
@@ -171,7 +177,7 @@ export default function HomePage() {
    </div>
 
    {/* 社交媒体图标 */}
-   <div className="flex flex-col gap-3 fixed left-6 bottom-20 z-10">
+   <div className="flex flex-col gap-3 fixed right-6 bottom-20 z-10">
     {personal.socialMedia.map((social, index) => (
      <div key={index} className="p-1 rounded-full bg-(--secondary-foreground)">
       {social.icon && <social.icon size={16} color="var(--active)" />}
