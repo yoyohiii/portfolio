@@ -2,25 +2,20 @@
  * @Author: yoyo
  * @Date: 2025-12-12 17:31:13
  * @LastEditors: yoyo
- * @LastEditTime: 2026-01-22 16:24:24
+ * @LastEditTime: 2026-01-30 17:25:09
  * @FilePath: \next-react\src\app\layout.tsx
  * @Description:
  */
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Navbar from "../components/Navbar";
+import { ZCOOL_KuaiLe } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../providers/ThemeProvider";
 import Theme from "../components/Theme";
-
-const geistSans = Geist({
+// Bitcount ZCOOL_KuaiLe
+const geistSans = ZCOOL_KuaiLe({
  variable: "--font-geist-sans",
  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
- variable: "--font-geist-mono",
- subsets: ["latin"],
+ weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -35,7 +30,7 @@ export default function RootLayout({
 }>) {
  return (
   <html lang="en" suppressHydrationWarning>
-   <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+   <body className={`${geistSans.variable} antialiased`}>
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
      <main className="size-full">
       {/* <Navbar /> */}

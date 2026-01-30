@@ -51,7 +51,7 @@ export default function PortfolioPage() {
     </div>
     <AnimateFadeIn
      key={index}
-     className="col-span-3 flex flex-col py-15 border-r border-(--primary)/40 pr-10"
+     className="col-span-3 flex flex-col py-15 border-r border-(--primary)/40 pr-10 h-full"
     >
      <div className="title-border text-2xl mb-6 font-bold text-shadow-lg">
       {portfolio.name}
@@ -67,7 +67,7 @@ export default function PortfolioPage() {
 
      <div className="my-5 w-full h-px bg-linear-to-r from-(--active)/20 to-transparent"></div>
 
-     <div className=" flex-1">
+     <div className="h-full flex-1">
       <div className="opacity-50 leading-10">{portfolio.des}</div>
       <motion.div className="flex gap-2 items-center mt-5 cursor-pointer">
        <CirclePlay
@@ -133,7 +133,7 @@ export default function PortfolioPage() {
       })}
      </motion.div>
     ) : (
-     <div className="col-span-2 flex-center relative">
+     <div className="h-full col-span-2 flex-center relative">
       <motion.img
        key={imgIndex}
        src={`${baseUrl}${portfolio.imgs[imgIndex]}`}
