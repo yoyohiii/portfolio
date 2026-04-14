@@ -2,7 +2,7 @@
  * @Author: yoyo
  * @Date: 2026-01-05 10:58:01
  * @LastEditors: yoyo
- * @LastEditTime: 2026-01-28 16:32:54
+ * @LastEditTime: 2026-04-14 17:20:22
  * @FilePath: \next-react\src\app\portfolio\page.tsx
  * @Description:
  */
@@ -64,11 +64,20 @@ export default function PortfolioPage() {
       <CalendarDays size={20} className="text-(--active)" />
       <span>{portfolio.time}</span>
      </div>
+     <div className="mt-2">{portfolio.des}</div>
 
-     <div className="my-5 w-full h-px bg-linear-to-r from-(--active)/20 to-transparent"></div>
+     <div className="my-3 w-full h-px bg-linear-to-r from-(--active)/20 to-transparent"></div>
 
      <div className="h-full flex-1">
-      <div className="opacity-50 leading-10">{portfolio.des}</div>
+      <div className="opacity-50 ">
+       {portfolio.duties.map((duty, index) => (
+        <div key={index} className="flex gap-2 items-start mt-3">
+         <span className="text-(--active) mt-1">-</span>
+         <span>{duty}</span>
+        </div>
+       ))}
+      </div>
+
       <motion.div className="flex gap-2 items-center mt-5 cursor-pointer">
        <CirclePlay
         size={20}
@@ -79,7 +88,7 @@ export default function PortfolioPage() {
       </motion.div>
      </div>
 
-     <div className="flex gap-2 mt-4">
+     <div className="flex gap-2 mt-4 flex-wrap">
       {portfolio.technology.map((tech, index) => {
        return (
         <div
