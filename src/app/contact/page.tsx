@@ -2,7 +2,7 @@
  * @Author: yoyo
  * @Date: 2025-12-24 15:39:21
  * @LastEditors: yoyo
- * @LastEditTime: 2026-04-16 17:30:42
+ * @LastEditTime: 2026-04-16 18:19:48
  * @FilePath: \next-react\src\app\contact\page.tsx
  * @Description:
  */
@@ -16,7 +16,7 @@ import { AnimateFadeIn } from "@/src/components/AnimateCom";
 
 export default function ContactPage() {
  return (
-  <AnimateFadeIn className="size-full overflow-y-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-10">
+  <AnimateFadeIn className="size-full overflow-y-auto overflow-x-hidden px-4 py-6 sm:px-6 sm:py-8 lg:px-10">
    <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-6 lg:flex-row lg:gap-10">
     <div className="lg:w-1/2">
      <div className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">

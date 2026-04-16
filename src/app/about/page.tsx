@@ -46,10 +46,7 @@ export default function DemoPage() {
  return (
   <div className="relative px-4 py-6 sm:px-6 lg:px-10 xl:px-16">
    <div className="mx-auto max-w-7xl grid gap-6 lg:grid-cols-[0.92fr_1.08fr] items-start">
-    <AnimateFadeIn
-     className="section-shell p-4 sm:p-5 lg:sticky lg:top-6"
-     delay={0.1}
-    >
+    <AnimateFadeIn className=" sm:p-5 lg:sticky lg:top-6" delay={0.1}>
      <div className="relative overflow-hidden rounded-4xl border border-(--active)/15 bg-linear-to-br from-(--active)/12 via-transparent to-cyan-400/10 p-4 sm:p-5">
       <div className="absolute inset-0 mesh-panel opacity-20" />
       <div className="relative flex flex-col gap-4">
@@ -72,56 +69,7 @@ export default function DemoPage() {
          animate={{ opacity: 1, scale: 1 }}
          transition={{ duration: 0.7 }}
         />
-
-        {/* <div className="absolute left-4 top-4 rounded-2xl border border-white/20 bg-black/18 px-3 py-2 backdrop-blur-md">
-         <div className="text-xs uppercase tracking-[0.24em] text-white/70">
-          Role
-         </div>
-         <div className="mt-1 text-sm sm:text-base font-semibold text-white">
-          {personal.occupation}
-         </div>
-        </div>
-
-        <div className="absolute left-4 right-4 bottom-4 rounded-2xl border border-white/16 bg-black/20 px-4 py-3 backdrop-blur-md text-white">
-         <div className="flex items-center justify-between gap-3">
-          <div>
-           <div className="text-xs uppercase tracking-[0.24em] text-white/70">
-            Based In
-           </div>
-           <div className="mt-1 text-sm font-semibold">{personal.address}</div>
-          </div>
-          <div className="text-right">
-           <div className="text-xs uppercase tracking-[0.24em] text-white/70">
-            Focus
-           </div>
-           <div className="mt-1 text-sm font-semibold">WebGIS / Frontend</div>
-          </div>
-         </div>
-        </div> */}
        </div>
-
-       {/* <div className="grid grid-cols-4 gap-2">
-        {personal.imgs.map((imageName, thumbnailIndex) => (
-         <button
-          key={imageName}
-          type="button"
-          onClick={() => setIndex(thumbnailIndex)}
-          className={`relative overflow-hidden rounded-2xl border transition-all ${
-           thumbnailIndex === index
-            ? "border-(--active)/55 shadow-[0_0_0_1px_color-mix(in_srgb,var(--active)_45%,transparent)]"
-            : "border-(--active)/12 opacity-70 hover:opacity-100"
-          }`}
-         >
-          <Image
-           src={`${baseUrl}${imageName}`}
-           height={80}
-           width={60}
-           alt={`Thumbnail ${thumbnailIndex + 1}`}
-           className="h-16 sm:h-20 w-full object-cover"
-          />
-         </button>
-        ))}
-       </div> */}
       </div>
      </div>
     </AnimateFadeIn>
