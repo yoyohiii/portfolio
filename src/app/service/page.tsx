@@ -2,7 +2,7 @@
  * @Author: yoyo
  * @Date: 2025-12-24 10:15:47
  * @LastEditors: yoyo
- * @LastEditTime: 2026-04-16 16:06:11
+ * @LastEditTime: 2026-04-16 17:07:44
  * @FilePath: \next-react\src\app\service\page.tsx
  * @Description:
  */
@@ -14,24 +14,21 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import SpotlightCard from "@/src/components/SpotlightCard";
-import HomeTitle from "@/src/components/HomeTitle";
 import { siteContent } from "@/src/data/siteContent";
 
 export default function ServicePage() {
  return (
-  <AnimateFadeIn className="py-10 flex flex-col items-center w-full">
-   <HomeTitle title={siteContent.service.title} />
-
-   <p className="text-center opacity-50 max-w-lg mb-8 text-sm leading-relaxed">
+  <AnimateFadeIn className="py-6 px-4 sm:px-6 flex flex-col items-center w-full">
+   <p className="text-center opacity-50 max-w-lg mb-6 text-sm leading-relaxed">
     {siteContent.service.intro}
    </p>
 
    {/* 服务卡片 */}
-   <div className="w-2/3 grid grid-cols-3 gap-6 mx-auto mb-10">
+   <div className="w-full max-w-6xl grid sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 mx-auto">
     {services.map((ele, index) => (
      <SpotlightCard
       key={index}
-      className="bg-(--active)/10 p-6 flex flex-col rounded-2xl overflow-hidden h-60"
+      className="bg-(--active)/10 p-5 sm:p-6 flex flex-col rounded-2xl overflow-hidden min-h-60"
      >
       <div className="mb-4 flex items-center gap-4">
        <div className="p-2.5 bg-(--active)/20 rounded-xl w-fit">
@@ -63,11 +60,11 @@ export default function ServicePage() {
    </div>
 
    {/* 服务流程 */}
-   <div className="w-4/5 max-w-5xl">
+   <div className="w-full max-w-5xl my-10 sm:my-14">
     {/* <h3 className="text-center text-lg font-bold mb-10 opacity-80">服务流程</h3> */}
-    <div className="grid grid-cols-4 gap-4 relative">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative">
      {/* 连接线 */}
-     <div className="absolute top-5 left-[12.5%] right-[12.5%] h-px bg-(--active)/20" />
+     <div className="absolute top-5 left-[12.5%] right-[12.5%] h-px bg-(--active)/20 hidden md:block" />
      {siteContent.service.processSteps.map((step, index) => (
       <motion.div
        key={index}
@@ -88,8 +85,8 @@ export default function ServicePage() {
    </div>
 
    {/* CTA */}
-   {/* <motion.div
-    className="w-4/5 max-w-5xl border border-(--active)/30 rounded-2xl p-10 text-center bg-(--active)/5"
+   <motion.div
+    className="w-full max-w-5xl border border-(--active)/30 rounded-2xl p-6 sm:p-10 text-center bg-(--active)/5"
     whileHover={{ borderColor: "var(--active)" }}
     transition={{ duration: 0.3 }}
    >
@@ -106,7 +103,7 @@ export default function ServicePage() {
       联系我
      </motion.button>
     </Link>
-   </motion.div> */}
+   </motion.div>
   </AnimateFadeIn>
  );
 }

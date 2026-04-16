@@ -2,7 +2,7 @@
  * @Author: yoyo
  * @Date: 2025-12-24 15:39:21
  * @LastEditors: yoyo
- * @LastEditTime: 2026-04-15 14:13:37
+ * @LastEditTime: 2026-04-16 17:30:42
  * @FilePath: \next-react\src\app\contact\page.tsx
  * @Description:
  */
@@ -12,29 +12,30 @@ import personal from "@/src/data/about";
 import { Mail, MapPin, Smartphone } from "lucide-react";
 import * as motion from "motion/react-client";
 import { siteContent } from "@/src/data/siteContent";
+import { AnimateFadeIn } from "@/src/components/AnimateCom";
 
 export default function ContactPage() {
  return (
-  <div className="size-full flex-center px-6">
-   <div className="flex flex-col lg:flex-row gap-10 w-full max-w-6xl">
+  <AnimateFadeIn className="size-full overflow-y-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-10">
+   <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-6 lg:flex-row lg:gap-10">
     <div className="lg:w-1/2">
-     <div className="text-4xl lg:text-5xl font-bold mb-8 text-shadow-lg">
+     <div className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
       {siteContent.contact.titlePrefix}
       <span className="text-(--active)">
        {siteContent.contact.titleHighlight}
       </span>
      </div>
 
-     <div className="opacity-60 mb-6 leading-relaxed text-sm lg:text-base">
+     <div className="mt-4 max-w-xl text-sm leading-relaxed opacity-70 lg:text-base">
       {siteContent.contact.description}
      </div>
 
-     <div className="border-l-4 border-(--active) px-6 py-8 opacity-90 rounded-r-2xl bg-(--active)/5">
-      <div className="mb-8">
+     <div className="mt-6 rounded-2xl border border-(--active)/20 bg-(--active)/5 px-4 py-6 opacity-95 shadow-[0_16px_40px_color-mix(in_srgb,var(--active)_12%,transparent)] backdrop-blur-sm sm:px-6 sm:py-8">
+      <div className="mb-8 border-b border-(--foreground)/10 pb-6 last:mb-0 last:border-b-0 last:pb-0">
        <div className="opacity-30 mb-3">
         {siteContent.contact.workInfoTitle}
        </div>
-       <div className="flex gap-2 items-center">
+       <div className="flex items-center gap-2">
         <MapPin size={18} className="text-(--active)" />
         {personal.address}
        </div>
@@ -42,16 +43,16 @@ export default function ContactPage() {
         {siteContent.contact.availableText}
        </div>
       </div>
-      <div className="mb-8">
+      <div className="mb-8 border-b border-(--foreground)/10 pb-6 last:mb-0 last:border-b-0 last:pb-0">
        <div className="opacity-30 mb-3">
         {siteContent.contact.contactInfoTitle}
        </div>
-       <div className="flex gap-2 items-center">
-        <Smartphone size={20} />
+       <div className="flex items-center gap-2 break-all">
+        <Smartphone size={20} className="text-(--active)" />
         {personal.phone}
        </div>
-       <div className="flex gap-2 mt-1 items-center">
-        <Mail size={20} />
+       <div className="mt-1 flex items-center gap-2 break-all">
+        <Mail size={20} className="text-(--active)" />
         {personal.email}
        </div>
       </div>
@@ -62,7 +63,10 @@ export default function ContactPage() {
        </div>
        <div className="grid gap-2 text-sm">
         {siteContent.contact.cooperation.map((item) => (
-         <div key={item.label} className="flex items-start gap-2 opacity-80">
+         <div
+          key={item.label}
+          className="flex items-start gap-2 rounded-md px-2 py-1.5 opacity-85 transition-colors hover:bg-(--active)/8"
+         >
           <siteContent.contact.cooperationIcon
            size={15}
            className="mt-0.5 text-(--active)"
@@ -76,14 +80,14 @@ export default function ContactPage() {
       </div>
      </div>
 
-     <div className="flex gap-3 mt-8">
+     <div className="mt-6 flex flex-wrap gap-3 sm:mt-8">
       {personal.socialMedia.map((social, index) => (
        <motion.a
         key={index}
         href={social.url}
         target="_blank"
         rel="noreferrer"
-        className="p-2 rounded-full border border-(--active)/30 opacity-80 hover:opacity-100 hover:bg-(--active)/10"
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-(--active)/35 bg-(--background)/65 opacity-85 shadow-[0_8px_20px_color-mix(in_srgb,var(--active)_10%,transparent)] transition-all hover:-translate-y-0.5 hover:bg-(--active)/10 hover:opacity-100"
        >
         {social.icon && <social.icon size={20} />}
        </motion.a>
@@ -91,33 +95,32 @@ export default function ContactPage() {
      </div>
     </div>
 
-    <div className="relative lg:w-1/2">
-     {/* <div className="absolute text-center w-full top-2 left-0 text-2xl">
-       Contact Form
-      </div> */}
-
+    <div className="relative w-full lg:w-1/2">
      <ElectricBorder className="size-full">
-      <div className="size-full p-8 lg:p-10 flex flex-col gap-4 bg-(--background)/70 backdrop-blur-sm rounded-xl">
-       <div className="text-center w-full text-2xl font-bold">
+      <div className="mesh-panel size-full rounded-xl border border-(--foreground)/10 bg-(--background)/75 p-5 backdrop-blur-md sm:p-8 lg:p-10">
+       <div className="w-full text-center text-xl font-bold sm:text-2xl">
         {siteContent.contact.formTitle}
        </div>
-       <div className="text-center text-xs opacity-50 -mt-2 mb-1">
+       <div className="-mt-1 mb-5 text-center text-xs opacity-55">
         {siteContent.contact.formDescription}
        </div>
 
-       <div className="flex-1 flex flex-col gap-2 text-sm">
+       <div className="flex flex-1 flex-col gap-3 text-sm">
         {siteContent.contact.formFields.map((field, index) => (
          <div key={field.label}>
           <div
-           className={`opacity-60 ${index === 0 ? "" : field.type === "textarea" ? "mt-2" : "mt-1"}`}
+           className={`mb-1 opacity-65 ${index === 0 ? "" : field.type === "textarea" ? "mt-1" : ""}`}
           >
            {field.label}
           </div>
           {field.type === "textarea" ? (
-           <textarea style={formTextarea} placeholder={field.placeholder} />
+           <textarea
+            className={formTextareaClass}
+            placeholder={field.placeholder}
+           />
           ) : (
            <input
-            style={formInput}
+            className={formInputClass}
             type={field.type}
             placeholder={field.placeholder}
            />
@@ -126,49 +129,19 @@ export default function ContactPage() {
         ))}
        </div>
 
-       <div className="w-full bg-(--active) h-12 flex-center rounded-lg font-bold text-white cursor-pointer hover:brightness-105 transition-all">
+       <div className="mt-6 flex h-12 w-full cursor-pointer items-center justify-center rounded-lg bg-(--active) text-sm font-bold text-white shadow-[0_16px_34px_color-mix(in_srgb,var(--active)_34%,transparent)] transition-all hover:-translate-y-0.5 hover:brightness-105 sm:text-base">
         {siteContent.contact.submitCta}
        </div>
       </div>
      </ElectricBorder>
-     {/* <div
-      className="border-l-2 border-t-2 top-0 left-0"
-      style={borderBox}
-     ></div>
-     <div
-      className="border-r-2 border-t-2 top-0 right-0"
-      style={borderBox}
-     ></div>
-     <div
-      className="border-l-2 border-b-2 bottom-0 left-0"
-      style={borderBox}
-     ></div>
-     <div
-      className="border-r-2 border-b-2 right-0 bottom-0"
-      style={borderBox}
-     ></div> */}
     </div>
    </div>
-  </div>
+  </AnimateFadeIn>
  );
 }
 
-const formInput: React.CSSProperties = {
- width: "100%",
- height: "42px",
- borderBottom:
-  "1px solid color-mix(in srgb, var(--foreground) 35%, transparent)",
- background: "transparent",
- padding: "0 6px",
- outline: "none",
-};
+const formInputClass =
+ "h-11 w-full rounded-md border border-(--foreground)/18 bg-(--background)/40 px-3 outline-none transition-all placeholder:text-(--foreground)/40 focus:border-(--active)/60 focus:bg-(--background)/60 focus:ring-2 focus:ring-(--active)/18";
 
-const formTextarea: React.CSSProperties = {
- width: "100%",
- height: "96px",
- border: "1px solid color-mix(in srgb, var(--foreground) 35%, transparent)",
- borderRadius: "8px",
- background: "transparent",
- padding: "8px",
- outline: "none",
-};
+const formTextareaClass =
+ "h-28 w-full rounded-md border border-(--foreground)/18 bg-(--background)/40 px-3 py-2 outline-none transition-all placeholder:text-(--foreground)/40 focus:border-(--active)/60 focus:bg-(--background)/60 focus:ring-2 focus:ring-(--active)/18";
