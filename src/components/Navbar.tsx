@@ -2,22 +2,17 @@
  * @Author: yoyo
  * @Date: 2025-12-23 17:01:17
  * @LastEditors: yoyo
- * @LastEditTime: 2026-01-20 18:22:29
+ * @LastEditTime: 2026-04-16 17:03:50
  * @FilePath: \next-react\src\components\Navbar.tsx
  * @Description:
  */
 
 "use client";
 import { usePathname } from "next/navigation";
-import { SunMoon } from "./Theme";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 const Navbar = () => {
  const pathName = usePathname();
- const [scrollY, setScrollY] = useState(
-  typeof window !== "undefined" ? window.scrollY : 0,
- );
 
  const bars = [
   { title: "首页", link: "/" },
@@ -29,41 +24,23 @@ const Navbar = () => {
   { title: "联系", link: "/contact" },
  ];
 
- useEffect(() => {
-  const handleScroll = () => {
-   setScrollY(window.scrollY);
-  };
-  window.addEventListener("scroll", handleScroll);
-  return () => {
-   window.removeEventListener("scroll", handleScroll);
-  };
- }, []);
  return (
-  <>
-   <div
-    className="h-16 fixed z-10 w-full px-[30%] transition-all duration-1000"
-    style={{
-     backdropFilter: scrollY > 40 ? "blur(24px)" : "none",
-     //  background: "linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0))",
-    }}
-   >
-    <div className="h-full rounded-2xl flex items-center gap-4 justify-around">
-     {bars.map((bar) => (
-      <Link
-       key={bar.title}
-       href={bar.link}
-       style={{
-        color: pathName === bar.link ? "var(--active)" : "var(--primary)",
-       }}
-      >
-       {bar.title}
-      </Link>
-     ))}
-
-     <SunMoon />
-    </div>
+  <div className="mx-4 mt-20 sm:mt-4 sm:mx-20 lg:mx-[24%] xl:mx-[30%] transition-all duration-1000 border rounded-2xl overflow-x-auto whitespace-nowrap">
+   <div className="h-12 min-w-max rounded-2xl flex items-center gap-2 px-2 sm:gap-4 sm:px-4 justify-start sm:justify-around">
+    {bars.map((bar) => (
+     <Link
+      key={bar.title}
+      href={bar.link}
+      className="shrink-0 rounded-full px-3 py-1.5 text-sm sm:text-base transition-colors"
+      style={{
+       color: pathName === bar.link ? "var(--active)" : "var(--primary)",
+      }}
+     >
+      {bar.title}
+     </Link>
+    ))}
    </div>
-  </>
+  </div>
  );
 };
 

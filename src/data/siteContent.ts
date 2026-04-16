@@ -34,6 +34,17 @@ export interface SkillTextItem {
  skills: string;
 }
 
+export interface HomeHighlight {
+ label: string;
+ value: string;
+}
+
+export interface HomeQuickLink {
+ title: string;
+ desc: string;
+ href: string;
+}
+
 export interface ProcessStep {
  step: string;
  title: string;
@@ -68,13 +79,47 @@ export const siteContent = {
  home: {
   cooperationBadge: "开放合作",
   englishRole: "Senior Frontend Engineer | WebGIS Specialist",
+  summary:
+   "聚焦WebGIS、低空巡检与复杂业务前端工程化，能够独立推进从方案设计、核心模块开发到上线交付的完整前端闭环。",
+  highlights: [
+   { label: "工作经历", value: "experienceCount" },
+   { label: "精选项目", value: "portfolioCount" },
+   { label: "主力方向", value: "WebGIS / 可视化" },
+   { label: "交付方式", value: "远程 / 项目制" },
+  ] satisfies HomeHighlight[],
   coreSkills: [
    { name: "地图引擎", skills: "Cesium / Mapbox / Leaflet" },
    { name: "前端框架", skills: "Vue3 / React / Next.js" },
    { name: "桌面应用", skills: "Electron / 工程化" },
   ] satisfies SkillTextItem[],
+  focusTitle: "我能解决的问题",
+  focusAreas: [
+   "复杂 WebGIS 平台架构与核心模块落地",
+   "低空巡检、任务回放、实时遥测等业务交互实现",
+   "中后台系统组件化、权限治理与工程规范建设",
+   "官网、展示站与数据可视化页面的体验表达与性能优化",
+  ],
+  featuredTitle: "精选项目",
+  featuredDescription: "聚焦复杂业务、地图能力与工程稳定性的代表性项目。",
+  quickLinks: [
+   {
+    title: "查看项目作品",
+    desc: "浏览 WebGIS、低空巡检与桌面端代表项目",
+    href: "/portfolio",
+   },
+   {
+    title: "了解职业经历",
+    desc: "查看教育背景与近年的核心工作经验",
+    href: "/experience",
+   },
+   {
+    title: "咨询合作方式",
+    desc: "适合项目制、远程长期与复杂前端系统协作",
+    href: "/contact",
+   },
+  ] satisfies HomeQuickLink[],
   contactCta: "立即联系",
-  resumeCta: "下载简历",
+  resumeCta: "查看简历",
   scrollHint: "向下滚动了解更多",
  },
  about: {
