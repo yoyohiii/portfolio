@@ -2,18 +2,17 @@
  * @Author: yoyo
  * @Date: 2025-12-24 14:19:33
  * @LastEditors: yoyo
- * @LastEditTime: 2026-01-15 16:44:30
+ * @LastEditTime: 2026-04-16 14:01:09
  * @FilePath: \next-react\src\app\resume\page.tsx
  * @Description:
  */
 "use client";
-import { color, motion } from "framer-motion";
-import { useState, useMemo, useEffect } from "react";
-import { CalendarDays, Heart, Music, Rabbit } from "lucide-react";
-import personal from "@/src/data/about";
+import { motion } from "framer-motion";
+import { CalendarDays, Rabbit } from "lucide-react";
 import { education, experience, skills } from "@/src/data/resume";
 import { AnimateFadeIn } from "@/src/components/AnimateCom";
 import SpotlightCard from "@/src/components/SpotlightCard";
+import { siteContent } from "@/src/data/siteContent";
 
 export default function LayoutPage() {
  //  const [positions, setPositions] = useState<{ top: string; left: string }[]>();
@@ -27,31 +26,17 @@ export default function LayoutPage() {
  //  }, []);
 
  return (
-  <div className="py-20 px-[15%]">
+  <div className="py-10 px-[15%]">
    <div className="text-2xl my-10 title-border text-shadow-lg">
-    EDUCTION & EXPERIENCE
+    {siteContent.resume.timelineTitle}
    </div>
    <div className="w-full h-full flex gap-14">
-    {/* <svg xmlns="http://www.w3.org/2000/svg" className="absolute size-full">
-     <motion.path
-      d="M 800 17 C 600 100 700 103 700 213.5  C 700 300 900 303 800 380"
-      fill="transparent"
-      strokeWidth="2"
-      stroke="var(--active)"
-      strokeLinecap="round"
-      initial={{ pathLength: 0 }}
-      animate={{ pathLength: 1 }}
-      transition={{ duration: 4, ease: "easeInOut" }}
-     />
-    </svg> */}
-
     <AnimateFadeIn className="flex-1">
      {education.map((ele, index) => (
       <div key={index} className="border-l-2 border-(--active) relative p-4">
-       {/* <Heart className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2" /> */}
        <div className="absolute top-1/2 left-0 -translate-x-2.75 -translate-y-1/2 w-5 h-5 bg-(--active) rounded-full"></div>
        <SpotlightCard className="p-4 bg-(--primary-foreground)">
-        <div>{ele.name}</div>
+        <div>{ele.school}</div>
         <div className="flex gap-1 my-2 text-(--active) text-sm opacity-80">
          <CalendarDays size={20} />
          {ele.time}
@@ -68,7 +53,7 @@ export default function LayoutPage() {
        {/* <Heart className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2" /> */}
        <div className="absolute top-1/2 left-0 -translate-x-2.75 -translate-y-1/2 w-5 h-5 bg-(--active) rounded-full"></div>
        <SpotlightCard className="p-4 bg-(--primary-foreground)">
-        <div>{ele.name}</div>
+        <div>{ele.company}</div>
         <div className="flex gap-1 my-2 text-(--active) text-sm opacity-80">
          <CalendarDays size={20} />
          {ele.time}
@@ -80,7 +65,9 @@ export default function LayoutPage() {
     </AnimateFadeIn>
    </div>
 
-   <div className="text-2xl my-10 title-border text-shadow-lg">SKILLS</div>
+   <div className="text-2xl my-10 title-border text-shadow-lg">
+    {siteContent.resume.skillTitle}
+   </div>
 
    <div className="grid grid-cols-2 gap-20 flex-wrap">
     {skills.map((ele, index) => (

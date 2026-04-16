@@ -20,13 +20,13 @@ const Navbar = () => {
  );
 
  const bars = [
-  { title: "Home", link: "/" },
-  { title: "About", link: "/about" },
-  { title: "Experience", link: "/experience" },
-  { title: "Skill", link: "/skill" },
-  { title: "Portfolio", link: "/portfolio" },
-  { title: "Service", link: "/service" },
-  { title: "Contact", link: "/contact" },
+  { title: "首页", link: "/" },
+  { title: "关于", link: "/about" },
+  { title: "经历", link: "/experience" },
+  { title: "技能", link: "/skill" },
+  { title: "作品", link: "/portfolio" },
+  { title: "服务", link: "/service" },
+  { title: "联系", link: "/contact" },
  ];
 
  useEffect(() => {

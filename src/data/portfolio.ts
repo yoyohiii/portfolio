@@ -2,7 +2,7 @@
  * @Author: yoyo
  * @Date: 2026-01-05 11:14:56
  * @LastEditors: yoyo
- * @LastEditTime: 2026-04-14 18:32:38
+ * @LastEditTime: 2026-04-16 15:31:22
  * @FilePath: \next-react\src\data\portfolio.ts
  * @Description:
  */
@@ -19,39 +19,37 @@ export interface IPortfolio {
 const portfolios: IPortfolio[] = [
  {
   name: "纵横星图桌面端",
-  time: "2025年9月",
+  time: "2024.01 ~ 2025.08",
   site: "http://223.85.99.73:9091/",
   technology: [
-   "Vue3",
-   "TypeScript",
    "Electron",
-   "Vite",
    "Koa",
    "SQLite",
-   "WebSocket",
+   "EventSource",
+   "Vue3",
+   "TypeScript",
+   "Vite",
    "Cesium",
   ],
-  des: "面向无人机任务规划与执行的桌面端应用，定位为“地图可视化 + 航线规划 + 任务管理 + 本地服务协同”的一体化作业平台。系统覆盖了任务全流程：计划创建、目标管理、航线生成、禁飞与高程校验、航线上传/回传、执行状态跟踪、数据导入导出等。",
+  des: "面向无人机全生命周期作业的桌面端核心系统，集成地图可视化、航线高精度规划、任务协同管理及本地服务调度。系统支撑了从计划创建、高程校验、航线下发到执行状态实时监控的全流程业务。",
   duties: [
-   "负责桌面端三层架构设计与落地，构建“渲染进程业务层 + Electron 主进程能力层 + 本地 Koa 服务层”的协同模型，统一 IPC、HTTP、WS 通信边界，提升复杂业务迭代的可维护性与可扩展性。",
-   "三维地图可视化引擎集成： 深度集成定制化 joCesium（基于 Cesium.js 二次封装），实现无人机实时三维轨迹渲染、视频脚印投影、航线规划交互绘制，支持多图层管理与动态样式切换。",
-   "实时遥测数据流处理： 基于 SSE（EventSource）接入无人机 OSD 遥测数据流，结合 MQTT 实现云端指令下发（起降、吊舱控制等），构建双向实时通讯链路，保障多机并发监控的数据可靠性。",
-   "高性能文件回放模块： 利用 Web Worker 在独立线程中解析大型地理数据文件（GeoPackage / GeoJSON），规避主线程阻塞，配合时间戳帧驱动的 Cesium 动画渲染实现飞行轨迹高清回放。",
-   "工程化建设： 开发多个自定义 Vite 插件（Cesium 资源特殊打包处理、原生模块编译适配、开发/生产双环境 Electron 启动），配合 Husky + commitlint + ESLint 构建规范化 Git 工作流，有效提升团队协作一致性。",
-   "国际化与权限体系： 落地 vue-i18n 多语言方案（中/英），封装 v-auth / v-auths 自定义指令实现细粒度按钮级权限控制，覆盖前后端 JWT 鉴权全链路。",
+   "参与基于 Electron 的三层解耦架构落地（渲染进程/业务层 + 主进程/能力层 + 本地 Koa/服务层）。通过统一 IPC 通信协议与 HTTP/WS 边界，解决了复杂业务逻辑导致的进程阻塞问题，使系统具备极强的可扩展性与本地资源调度能力",
+   "基于 Cesium.js 深度定制 joCesium 引擎。实现海量动态轨迹平滑渲染、视频脚印空间投影及交互式航线编辑器。针对航线规划，引入高程数据校验算法，确保了任务在三维空间下的安全性与精准度。",
+   "构建了基于 SSE (EventSource) 的单向高频遥测（OSD）接收方案与基于 MQTT 的双向指令下发体系。针对多机并发场景，设计了数据缓冲与帧平滑机制，确保了在复杂网络环境下监控界面的实时性与操控指令的可靠达",
+   "设计并实现了基于时间戳驱动的飞行轨迹镜像回放模块。通过对离线回放文件的解析与插值算法处理，在 Cesium 中实现了丝滑的 1:1 飞行场景复现，支持倍速切换与关键事件标记。",
+   "基于 Vue3 + TS 体系，封装了高可用的业务组件库；落地了 vue-i18n 国际化方案及基于 JWT 的全链路鉴权体系；通过自定义指令（v-auth）实现了细粒度到按钮级的动态权限控制，保障了工业级应用的安全性。",
   ],
-  imgs: ["hnjt1.png", "hnjt2.png", "hnjt3.png", "hnjt4.png"],
+  imgs: ["zhxt1.png", "zhxt2.png", "zhxt3.png", "zhxt4.png", "zhxt5.png"],
  },
  {
   name: "河南交投低空巡检可视化平台",
-  time: "2025年9月",
+  time: "2025.09 ~ 至今",
   site: "http://223.85.99.73:9091/",
   technology: [
+   "maplibre-gl",
    "Vue3",
    "TypeScript",
-   "Vite",
    "Pinia",
-   "Element Plus",
    "UnoCSS",
    "Cesium",
    "ECharts",
@@ -67,7 +65,7 @@ const portfolios: IPortfolio[] = [
    "设计并实现大文件上传方案（分片、断点续传、重试、MD5 校验），保障大体积影像资料稳定上传。",
    "沉淀 WebSocket 重连与地图实例复用等通用能力，提升系统稳定性并降低重复开发成本。",
   ],
-  imgs: ["hnjt1.png", "hnjt2.png", "hnjt3.png", "hnjt4.png"],
+  imgs: ["hnjt1.png", "hnjt2.png", "hnjt3.png", "hnjt4.png", "hnjt5.png"],
  },
  {
   name: "仿真考核系统",
@@ -86,37 +84,20 @@ const portfolios: IPortfolio[] = [
   ],
   des: "面向无人机专业教学场景的 Web 端仿真考核平台，支持载荷三维交互仿真、在线智能组卷与考试监控、成绩多维可视化分析，覆盖教师与学生双端完整业务闭环。",
   duties: [
-   " 工程化体系搭建：独立完成技术选型与工程基建，采用文件系统路由 + 多布局隔离方案；集成 Husky + Commitlint + lint-staged 质量门禁，构建从代码规范到产物优化（Terser 压缩）的完整工程链路。",
-   "三维仿真引擎设计：基于 Three.js 封装 ModelView 工具类，实现载荷模型加载、零部件爆炸图动画；设计射线投影 + 吸附阈值拖拽装配系统，完整还原载荷仿真操作流程。",
-   "在线考试引擎：独立设计多题型动态渲染与差异化评分模型，实现倒计时调度与切屏反作弊；采用 VeeValidate + Zod 构建类型安全表单校验，打通命题→分发→作答→评分→归档全流程闭环。",
-   "成绩可视化模块：封装 useECharts Hook 统一管理图表生命周期，设计分数分布与班级对比多维看板，支持联动筛选、分页加载与 xlsx 导出。",
+   "基于 Three.js 深度定制 ModelView 工具类，支撑高精航空载荷模型的交互展示。针对载荷装配环节，自主实现了基于射线投影（Raycaster）与空间吸附算法的精密装配系统，通过碰撞检测与 3D 坐标纠偏，1:1 还原了航院校准级操作标准。",
+   "针对成航职大的考核标准，设计并实现了一套基于 Schema 驱动的多维题型渲染引擎。系统打通了“命题-分发-作答-评分-归档”的全链路闭环，重点解决了“3D 操作题”的自动化评分逻辑，通过状态机捕获用户轨迹并与标准作业流程（SOP）进行实时对比。",
+   "封装 useECharts Hook 实现教学数据的响应式看板。针对大规模学生同时考试的场景，设计了毫秒级校准的分布式倒计时调度器及多维度切屏反作弊逻辑，确保了教学考核的严肃性与系统稳定性。",
+   "引入 VeeValidate + Zod 构建全链路类型安全表单，在前端完成严格的数据格式校验与业务逻辑预审，显著降低了后端接口的无效负载，提升了教务系统的响应速度。。",
   ],
-  imgs: ["hnjt1.png", "hnjt2.png", "hnjt3.png", "hnjt4.png"],
- },
- {
-  name: "低空飞行调度指挥中心大屏",
-  time: "2025.08 ~ 2026.03",
-  site: "http://223.85.99.73:9091/",
-  technology: [
-   "Vue3",
-   "TypeScript",
-   "Vite",
-   "Pinia",
-   "Vue Router",
-   "Element Plus",
-   "Sass",
-   "ECharts/Highcharts 3D",
-   "MapLibre/ThreeGISMap",
-   "Axios/WebSocket",
+  imgs: [
+   "zhfz1.png",
+   "zhfz2.png",
+   "zhfz3.png",
+   "zhfz4.png",
+   "zhfz5.png",
+   "zhfz6.png",
+   "zhfz7.png",
   ],
-  des: "面向无人机专业教学场景的 Web 端仿真考核平台，支持载荷三维交互仿真、在线智能组卷与考试监控、成绩多维可视化分析，覆盖教师与学生双端完整业务闭环。",
-  duties: [
-   " 工程化体系搭建：独立完成技术选型与工程基建，采用文件系统路由 + 多布局隔离方案；集成 Husky + Commitlint + lint-staged 质量门禁，构建从代码规范到产物优化（Terser 压缩）的完整工程链路。",
-   "三维仿真引擎设计：基于 Three.js 封装 ModelView 工具类，实现载荷模型加载、零部件爆炸图动画；设计射线投影 + 吸附阈值拖拽装配系统，完整还原载荷仿真操作流程。",
-   "在线考试引擎：独立设计多题型动态渲染与差异化评分模型，实现倒计时调度与切屏反作弊；采用 VeeValidate + Zod 构建类型安全表单校验，打通命题→分发→作答→评分→归档全流程闭环。",
-   "成绩可视化模块：封装 useECharts Hook 统一管理图表生命周期，设计分数分布与班级对比多维看板，支持联动筛选、分页加载与 xlsx 导出。",
-  ],
-  imgs: ["hnjt1.png", "hnjt2.png", "hnjt3.png", "hnjt4.png"],
  },
 ];
 

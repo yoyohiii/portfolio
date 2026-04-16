@@ -1,11 +1,13 @@
 import { X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 /*
  * @Author: yoyo
  * @Date: 2026-01-28 14:29:13
  * @LastEditors: yoyo
- * @LastEditTime: 2026-01-28 15:58:00
+ * @LastEditTime: 2026-04-16 15:52:14
  * @FilePath: \next-react\src\components\Dialog.tsx
  * @Description:
  */
@@ -18,11 +20,22 @@ export default function Dialog({
  visible: boolean;
  onClose: () => void;
 }) {
- return (
+ const [mounted, setMounted] = useState(false);
+
+ useEffect(() => {
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  setMounted(true);
+ }, []);
+
+ if (!mounted) {
+  return null;
+ }
+
+ return createPortal(
   <AnimatePresence>
    {visible && (
     <motion.div
-     className="size-full fixed top-0 left-0 z-1000"
+     className="w-screen h-screen fixed top-0 left-0 z-1000"
      initial={{ opacity: 0 }}
      animate={{ opacity: 1 }}
      transition={{ duration: 0.3 }}
@@ -40,6 +53,7 @@ export default function Dialog({
      </div>
     </motion.div>
    )}
-  </AnimatePresence>
+  </AnimatePresence>,
+  document.body,
  );
 }

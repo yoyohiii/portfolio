@@ -2,7 +2,7 @@
  * @Author: yoyo
  * @Date: 2025-12-24 15:39:21
  * @LastEditors: yoyo
- * @LastEditTime: 2026-01-22 18:48:23
+ * @LastEditTime: 2026-04-16 15:40:15
  * @FilePath: \next-react\src\components\Theme.tsx
  * @Description:
  */
@@ -158,7 +158,7 @@ export function Light() {
 
 export default function Theme() {
  return (
-  <div className="fixed top-4 right-5 z-20 flex items-center gap-4">
+  <div className="fixed top-6 right-6 z-20 flex items-center gap-4">
    <ThemeColor />
    <Light />
   </div>

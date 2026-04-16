@@ -2,7 +2,7 @@
  * @Author: yoyo
  * @Date: 2026-01-05 10:58:01
  * @LastEditors: yoyo
- * @LastEditTime: 2026-04-14 17:20:22
+ * @LastEditTime: 2026-04-16 16:03:35
  * @FilePath: \next-react\src\app\portfolio\page.tsx
  * @Description:
  */
@@ -10,164 +10,170 @@
 import { AnimateFadeIn } from "@/src/components/AnimateCom";
 import HomeTitle from "@/src/components/HomeTitle";
 import ImgPreview from "@/src/components/ImgPreview";
-import { MenuToggle } from "@/src/components/MenuToggle";
 import portfolios from "@/src/data/portfolio";
-import { motion } from "framer-motion";
-import { CalendarDays, CirclePlay, Link } from "lucide-react";
-import { useEffect, useState } from "react";
+import { siteContent } from "@/src/data/siteContent";
+import { AnimatePresence, motion } from "framer-motion";
+import { CalendarDays, CirclePlay, ExternalLink } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function PortfolioPage() {
  const baseUrl = "/images/portfolio/";
  const [index, setIndex] = useState(0);
- const [imgIndex, setImgIndex] = useState(0);
- const [isOpen, setIsOpen] = useState(true);
-
  const [visible, setVisible] = useState(false);
 
  const portfolio = portfolios[index];
-
  function setPortfolio(i: number) {
   setIndex(i);
-  setImgIndex(0);
-  setIsOpen(false);
  }
 
- useEffect(() => {
-  const interval = setInterval(() => {
-   setImgIndex((prevIndex) =>
-    prevIndex >= portfolio.imgs.length - 1 ? 0 : prevIndex + 1,
-   );
-  }, 5000);
-
-  return () => clearInterval(interval);
- });
-
  return (
-  <div className="size-full flex flex-col items-center py-15">
-   <HomeTitle title="PORTFOLIO" />
-   <div className="w-[70%] grid grid-cols-5 relative flex-1">
-    <div className="absolute z-20 right-4 top-4">
-     <MenuToggle toggle={() => setIsOpen(!isOpen)} isOpen={isOpen} />
-    </div>
-    <AnimateFadeIn
-     key={index}
-     className="col-span-3 flex flex-col py-15 border-r border-(--primary)/40 pr-10 h-full"
-    >
-     <div className="title-border text-2xl mb-6 font-bold text-shadow-lg">
-      {portfolio.name}
-     </div>
-     <div className="flex gap-2 text-(--active)">
-      <Link size={20} />
-      <span>{portfolio.site}</span>
-     </div>
-     <div className="flex gap-2">
-      <CalendarDays size={20} className="text-(--active)" />
-      <span>{portfolio.time}</span>
-     </div>
-     <div className="mt-2">{portfolio.des}</div>
+  <div className="relative size-full py-10 px-6 md:px-10">
+   <div className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-56 w-[92%] max-w-6xl rounded-[3rem] bg-[radial-gradient(circle_at_center,color-mix(in_srgb,var(--active)_16%,transparent),transparent_72%)]" />
 
-     <div className="my-3 w-full h-px bg-linear-to-r from-(--active)/20 to-transparent"></div>
+   <div className="relative mx-auto w-full max-w-7xl flex flex-col">
+    <HomeTitle title={siteContent.portfolio.title} />
 
-     <div className="h-full flex-1">
-      <div className="opacity-50 ">
-       {portfolio.duties.map((duty, index) => (
-        <div key={index} className="flex gap-2 items-start mt-3">
-         <span className="text-(--active) mt-1">-</span>
-         <span>{duty}</span>
-        </div>
-       ))}
-      </div>
+    <div className="grid xl:grid-cols-[2fr_1fr] gap-6 flex-1">
+     <AnimateFadeIn className="section-shell p-6 md:p-7" delay={0.15}>
+      <AnimatePresence mode="wait">
+       <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -16 }}
+        transition={{ duration: 0.3 }}
+       >
+        <div className="flex flex-wrap items-start justify-between gap-3 mb-2">
+         <div>
+          <div className="title-border text-2xl font-bold text-shadow-lg mb-2">
+           {portfolio.name}
+          </div>
+          <div className="flex items-center gap-2 text-sm text-(--foreground)/65">
+           <CalendarDays size={16} className="text-(--active)" />
+           <span>{portfolio.time}</span>
+          </div>
+         </div>
 
-      <motion.div className="flex gap-2 items-center mt-5 cursor-pointer">
-       <CirclePlay
-        size={20}
-        className="text-(--active)"
-        onClick={() => setVisible(true)}
-       />
-       <span>play demo</span>
-      </motion.div>
-     </div>
-
-     <div className="flex gap-2 mt-4 flex-wrap">
-      {portfolio.technology.map((tech, index) => {
-       return (
-        <div
-         key={index}
-         className="bg-(--active)/20 text-(--active) px-3 rounded-sm"
-        >
-         {tech}
-        </div>
-       );
-      })}
-     </div>
-    </AnimateFadeIn>
-
-    {isOpen ? (
-     <motion.div
-      className="h-full col-span-2 flex flex-col gap-10 relative p-20"
-      initial={{ x: 100 }}
-      animate={{ x: 0 }}
-      transition={{ duration: 0.5 }}
-     >
-      {portfolios.map((item, i) => {
-       return (
-        <motion.div
-         key={i}
-         className="pl-12 p-2 h-14 cursor-pointer rounded-sm relative bg-(--secondary-foreground)"
-         style={{ color: i === index ? "var(--active)" : "" }}
-         whileHover={{
-          x: -10,
-          transition: { duration: 0.3 },
-          color: "var(--active)",
-         }}
-         onClick={() => setPortfolio(i)}
-        >
-         <motion.div
-          className="rounded-full w-20 h-20 bg-cover absolute bottom-0 -left-10 flex items-center justify-center bg-(--background) border-2 border-(--primary-foreground)"
-          animate={{ rotate: i === index ? 360 : 0 }}
-          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+         <a
+          href={portfolio.site}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-full border border-(--active)/25 px-3 py-1.5 text-sm text-(--active) hover:bg-(--active)/10 transition-colors"
          >
-          <motion.img
-           width={40}
-           height={40}
-           src={`${baseUrl}${item.imgs[0]}`}
-           alt={item.name}
-           className="rounded-full w-3/5 h-3/5 object-cover"
-          />
-         </motion.div>
-         <div className="font-bold">{item.name}</div>
-         <div className="text-sm opacity-50">{item.time}</div>
-        </motion.div>
-       );
-      })}
-     </motion.div>
-    ) : (
-     <div className="h-full col-span-2 flex-center relative">
-      <motion.img
-       key={imgIndex}
-       src={`${baseUrl}${portfolio.imgs[imgIndex]}`}
-       alt={`Slide ${imgIndex + 1}`}
-       width={320}
-       height={600}
-       className="object-contain w-100 rounded-xl"
-       initial={{ opacity: 0 }}
-       animate={{ opacity: 1 }}
-       transition={{ duration: 0.8 }}
-      />
+          {siteContent.portfolio.visitCta}
+          <ExternalLink size={14} />
+         </a>
+        </div>
 
-      <div className="flex gap-3 items-center absolute bottom-10">
-       {portfolio.imgs.map((_img, i) => (
-        <motion.div
-         key={i}
-         className="w-2 h-2 rounded-full bg-(--primary) cursor-pointer hover:scale-120"
-         initial={{ opacity: i === imgIndex ? 1 : 0.4 }}
-         animate={{ opacity: i === imgIndex ? 1 : 0.4 }}
-         onClick={() => setImgIndex(i)}
-        />
-       ))}
+        <div className="text-(--foreground)/72 leading-7">{portfolio.des}</div>
+
+        <div className="my-3 w-full h-px bg-linear-to-r from-(--active)/25 to-transparent" />
+
+        <div className="space-y-3">
+         {portfolio.duties.map((duty, dutyIndex) => (
+          <div
+           key={dutyIndex}
+           className="rounded-xl border border-(--active)/10 bg-(--primary-foreground)/60 px-3.5 py-1"
+          >
+           <div className="flex gap-2 items-start text-sm leading-6 text-(--foreground)/68">
+            <span className="text-(--active) font-semibold">
+             {String(dutyIndex + 1).padStart(2, "0")}
+            </span>
+            <span>{duty}</span>
+           </div>
+          </div>
+         ))}
+        </div>
+
+        <div className="flex flex-wrap gap-2 mt-5">
+         {portfolio.technology.map((tech) => (
+          <div
+           key={tech}
+           className="rounded-full border border-(--active)/20 bg-(--active)/10 px-3 py-1 text-xs text-(--active)"
+          >
+           {tech}
+          </div>
+         ))}
+        </div>
+
+        <div className="mt-5 grid grid-cols-2 md:grid-cols-4 gap-3">
+         {portfolio.imgs.slice(0, 4).map((img) => (
+          <button
+           key={img}
+           type="button"
+           onClick={() => setVisible(true)}
+           className="relative overflow-hidden rounded-xl border border-(--active)/15 group"
+          >
+           <Image
+            src={`${baseUrl}${img}`}
+            alt={portfolio.name}
+            width={300}
+            height={200}
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+           />
+          </button>
+         ))}
+        </div>
+
+        <motion.button
+         type="button"
+         className="mt-2 inline-flex items-center gap-2 rounded-full border border-(--active)/25 px-4 py-2 text-sm hover:bg-(--active)/10 transition-colors"
+         whileHover={{ y: -2 }}
+         onClick={() => setVisible(true)}
+        >
+         <CirclePlay size={18} className="text-(--active)" />
+         {siteContent.portfolio.previewCta}
+        </motion.button>
+       </motion.div>
+      </AnimatePresence>
+     </AnimateFadeIn>
+
+     <AnimateFadeIn className="section-shell p-5 md:p-6" delay={0.2}>
+      <div className="text-sm text-(--active) font-semibold mb-1">
+       {siteContent.portfolio.listEyebrow}
       </div>
-     </div>
-    )}
+      <h3 className="text-lg font-semibold mb-4">
+       {siteContent.portfolio.listTitle}
+      </h3>
+
+      <div className="space-y-3">
+       {portfolios.map((item, i) => {
+        const active = i === index;
+        return (
+         <motion.button
+          type="button"
+          key={item.name}
+          onClick={() => setPortfolio(i)}
+          className={`w-full text-left rounded-2xl border p-3 transition-colors ${
+           active
+            ? "border-(--active)/35 bg-(--active)/8"
+            : "border-(--active)/10 bg-(--primary-foreground)/65 hover:border-(--active)/25"
+          }`}
+          whileHover={{ x: -4 }}
+         >
+          <div className="flex items-center gap-3">
+           <div className="w-14 h-14 shrink-0 rounded-xl overflow-hidden border border-(--active)/20">
+            <Image
+             src={`${baseUrl}${item.imgs[0]}`}
+             alt={item.name}
+             width={56}
+             height={56}
+             className="w-full h-full object-cover"
+            />
+           </div>
+
+           <div className="min-w-0">
+            <div className="font-semibold truncate">{item.name}</div>
+            <div className="text-xs opacity-60 mt-0.5">{item.time}</div>
+           </div>
+          </div>
+         </motion.button>
+        );
+       })}
+      </div>
+     </AnimateFadeIn>
+    </div>
    </div>
 
    <ImgPreview
