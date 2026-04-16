@@ -2,7 +2,7 @@
  * @Author: yoyo
  * @Date: 2025-12-24 10:15:47
  * @LastEditors: yoyo
- * @LastEditTime: 2026-04-16 17:59:46
+ * @LastEditTime: 2026-04-16 18:05:35
  * @FilePath: \next-react\src\app\about\page.tsx
  * @Description:
  */
@@ -60,7 +60,7 @@ export default function DemoPage() {
         </div>
        </div>
 
-       <div className="relative overflow-hidden rounded-[1.75rem] border border-(--active)/15 bg-(--background)/55">
+       <div className="overflow-hidden">
         <motion.img
          key={index}
          src={`${baseUrl}${personal.imgs[index]}`}
